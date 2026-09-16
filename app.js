@@ -65,10 +65,10 @@ async function mapConcurrent(items, concurrency, fn) {
 }
 
 const { 
-  usernew, 
-  add-ws,
-  add-vless, 
-  add-tr, 
+  createssh, 
+  createvmess, 
+  createvless, 
+  createtrojan, 
   createshadowsocks 
 } = require('./modules/create');
 
@@ -81,18 +81,18 @@ const {
 } = require('./modules/trial');
 
 const { 
-  renew, 
-  renewws, 
-  renewws, 
-  renewws, 
+  renewssh, 
+  renewvmess, 
+  renewvless, 
+  renewtrojan, 
   renewshadowsocks 
 } = require('./modules/renew');
 
 const { 
-  del, 
-  delws, 
-  delws, 
-  delws, 
+  delssh, 
+  delvmess, 
+  delvless, 
+  deltrojan, 
   delshadowsocks 
 } = require('./modules/del');
 
@@ -182,7 +182,7 @@ const vars = JSON.parse(fs.readFileSync(path.join(__dirname, '.vars.json'), 'utf
 const BOT_TOKEN = vars.BOT_TOKEN;
 const port = vars.PORT || 6969;
 const ADMIN = vars.USER_ID; 
-const NAMA_STORE = vars.NAMA_STORE || '@Belivpn_arya_bot';
+const NAMA_STORE = vars.NAMA_STORE || '@ARI_VPN_STORE';
 const GROUP_ID = vars.GROUP_ID;
 // V1 GOPAY
 let GOPAY_KEY = vars.GOPAY_KEY;
@@ -191,7 +191,7 @@ let AUTH_USER = vars.AUTH_USERNAME_ORKUT;  // username orderkuota
 let AUTH_TOKEN = vars.AUTH_TOKEN_ORKUT;    // token orderkuota
 
 const bot = new Telegraf(BOT_TOKEN);
-let ADMIN_USERNAME = '@Belivpn_arya_bot';
+let ADMIN_USERNAME = '@ARI_VPN_STORE';
 const adminIds = ADMIN;
 logger.info('Bot initialized');
 /*
@@ -491,8 +491,9 @@ Status: <code>${statusReseller}</code>
 • 🔑 Menu Admin   : /admin
 • 🛡️ Admin Panel  : /helpadmin
 
-👨‍💻 <b>Pembuat:</b> @Belivpn_arya_bot
-🛠️ <b>Credit:</b> JANCOK
+👨‍💻 <b>Pembuat:</b> @ARI_VPN_STORE
+🛠️ <b>Credit:</b> ARI STORE × API POTATO
+🔧 <b>Base:</b> FighterTunnel
 👥 <b>Pengguna BOT:</b> ${jumlahPengguna}
 ⏱️ <b>Latency:</b> ${latency} ms
 ──────────────────────────`;
@@ -506,6 +507,10 @@ let keyboard;
     [
       { text: '❌ Hapus Akun', callback_data: 'service_del' },
       { text: '📶 Cek Server', callback_data: 'cek_service' }
+    ],
+    [
+      { text: '🔀 Change Limit IP', callback_data: 'service_changelimip' },
+      { text: '🔧 Fix Akun Erorr', callback_data: 'service_fix' }
     ],
     [
       { text: '🗝️ Kunci Akun', callback_data: 'service_lock' },

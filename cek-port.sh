@@ -3,13 +3,11 @@
 # Urutan tampilan (INI yang bikin rapi)
 server_order=(
   "SG-VIP"
-  "SG-VVIP"
 )
 
 # Alias => domain
 declare -A servers=(
-  ["SG-VIP"]="ln.aryapro.net"
-  ["SG-VVIP"]="sgp.aryapro.net"
+  ["SG-VIP"]="sg.mikanajwa.my.id"
 )
 
 # Port + label
