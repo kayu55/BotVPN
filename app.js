@@ -65,10 +65,10 @@ async function mapConcurrent(items, concurrency, fn) {
 }
 
 const { 
-  createssh, 
-  createvmess, 
-  createvless, 
-  createtrojan, 
+  usernew, 
+  add-ws,
+  add-vless, 
+  add-tr, 
   createshadowsocks 
 } = require('./modules/create');
 
@@ -81,18 +81,18 @@ const {
 } = require('./modules/trial');
 
 const { 
-  renewssh, 
-  renewvmess, 
-  renewvless, 
-  renewtrojan, 
+  renew, 
+  renewws, 
+  renewws, 
+  renewws, 
   renewshadowsocks 
 } = require('./modules/renew');
 
 const { 
-  delssh, 
-  delvmess, 
-  delvless, 
-  deltrojan, 
+  del, 
+  delws, 
+  delws, 
+  delws, 
   delshadowsocks 
 } = require('./modules/del');
 
