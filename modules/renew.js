@@ -3,8 +3,8 @@ const { exec } = require('child_process');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./sellvpn.db');
 
-async function renewssh(username, exp, serverId) {
-  console.log(`Renewing SSH account for ${username} with expiry ${exp} days, on server ${serverId}`);
+async function renewssh(username, exp, limitip, serverId) {
+  console.log(`Renewing SSH account for ${username} with expiry ${exp} days, limit IP ${limitip} on server ${serverId}`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -19,7 +19,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/renew`;
+      const param = `/vps/renewsshvpn`;
       const web_URL = `http://${domain}${param}`; // Contoh: http://domainmu.com/vps/sshvpn
       const AUTH_TOKEN = server.auth;
       const days = exp;
@@ -28,6 +28,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 -H "Authorization: ${AUTH_TOKEN}" \
 -H "accept: application/json" \
 -H "Content-Type: application/json" \
+-d '{"kuota": 0}'`;
 
       exec(curlCommand, (err, stdout, stderr) => {
   // 1) Curl error / exit code error
@@ -92,15 +93,15 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 ────────────────────────────
 
 ✨ Terima kasih telah memperpanjang layanan kami!
-*© Telegram Bots - 2026*`;
+*© Telegram Bots - 2025*`;
 
         return resolve(msg);
       });
     });
   });
 }
-async function renewvmess(username, exp, serverId) {
-  console.log(`Renewing VMess account for ${username} with expiry ${exp} days`);
+async function renewvmess(username, exp, quota, limitip, serverId) {
+  console.log(`Renewing VMess account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip}`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -115,15 +116,17 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/renewws`;
+      const param = `/vps/renewvmess`;
       const web_URL = `http://${domain}${param}`; // contoh: http://domain.com/vps/vmess
       const AUTH_TOKEN = server.auth;
       const days = exp;
+      const KUOTA = quota;
 
       const curlCommand = `curl -sS --connect-timeout 1 --max-time 30 --fail -X PATCH "${web_URL}/${username}/${days}" \
 -H "Authorization: ${AUTH_TOKEN}" \
 -H "accept: application/json" \
 -H "Content-Type: application/json" \
+-d '{"kuota": ${KUOTA}}'`;
 
       exec(curlCommand, (err, stdout, stderr) => {
   // 1) Curl error / exit code error
@@ -182,21 +185,22 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 🔄 *Akun berhasil diperpanjang*
 ────────────────────────────
 👤 *Username*    : \`${s.username}\`
+📦 *Quota*       : \`${s.quota === "0" ? "Unlimited" : s.quota} GB\`
 📅 *Masa Aktif*  :
 🕒 Dari   : \`${s.from}\`
 🕒 Sampai : \`${s.to}\`
 ────────────────────────────
 
 ✨ Terima kasih telah memperpanjang layanan kami!
-*© Telegram Bots - 2026*`;
+*© Telegram Bots - 2025*`;
 
         return resolve(msg);
       });
     });
   });
 }
-async function renewvless(username, exp, serverId) {
-  console.log(`Renewing VLESS account for ${username} with expiry ${exp} days`);
+async function renewvless(username, exp, quota, limitip, serverId) {
+  console.log(`Renewing VLESS account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip}`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -211,15 +215,17 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/renewws`;
+      const param = `/vps/renewvless`;
       const web_URL = `http://${domain}${param}`;        // Contoh: http://domain.com/vps/vless
       const AUTH_TOKEN = server.auth;
       const days = exp;
+      const KUOTA = quota;
 
       const curlCommand = `curl -sS --connect-timeout 1 --max-time 30 --fail -X PATCH "${web_URL}/${username}/${days}" \
 -H "Authorization: ${AUTH_TOKEN}" \
 -H "accept: application/json" \
 -H "Content-Type: application/json" \
+-d '{"kuota": ${KUOTA}}'`;
 
       exec(curlCommand, (err, stdout, stderr) => {
   // 1) Curl error / exit code error
@@ -278,21 +284,22 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 🔄 *Akun berhasil diperpanjang*
 ────────────────────────────
 👤 *Username*    : \`${s.username}\`
+📦 *Quota*       : \`${s.quota === "0" ? "Unlimited" : s.quota} GB\`
 📅 *Masa Aktif*  :
 🕒 Dari   : \`${s.from}\`
 🕒 Sampai : \`${s.to}\`
 ────────────────────────────
 
 ✨ Terima kasih telah memperpanjang layanan kami!
-*© Telegram Bots - 2026*`;
+*© Telegram Bots - 2025*`;
 
         return resolve(msg);
       });
     });
   });
 }
-async function renewtrojan(username, exp, serverId) {
-  console.log(`Renewing TROJAN account for ${username} with expiry ${exp} days`);
+async function renewtrojan(username, exp, quota, limitip, serverId) {
+  console.log(`Renewing TROJAN account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip}`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -307,15 +314,17 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/renewws`;
+      const param = `/vps/renewtrojan`;
       const web_URL = `http://${domain}${param}`;         // Contoh: http://domain.com/vps/trojan
       const AUTH_TOKEN = server.auth;
       const days = exp;
+      const KUOTA = quota;
 
       const curlCommand = `curl -sS --connect-timeout 1 --max-time 30 --fail -X PATCH "${web_URL}/${username}/${days}" \
 -H "Authorization: ${AUTH_TOKEN}" \
 -H "accept: application/json" \
 -H "Content-Type: application/json" \
+-d '{"kuota": ${KUOTA}}'`;
 
       exec(curlCommand, (err, stdout, stderr) => {
   // 1) Curl error / exit code error
@@ -374,13 +383,14 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 🔄 *Akun berhasil diperpanjang*
 ────────────────────────────
 👤 *Username*    : \`${s.username}\`
+📦 *Quota*       : \`${s.quota === "0" ? "Unlimited" : s.quota} GB\`
 📅 *Masa Aktif*  :
 🕒 Dari   : \`${s.from}\`
 🕒 Sampai : \`${s.to}\`
 ────────────────────────────
 
 ✨ Terima kasih telah memperpanjang layanan kami!
-*© Telegram Bots - 2026*`;
+*© Telegram Bots - 2025*`;
 
         return resolve(msg);
       });
