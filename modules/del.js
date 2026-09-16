@@ -3,8 +3,8 @@ const { exec } = require('child_process');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./sellvpn.db');
 
-async function delssh(username, password, exp, iplimit, serverId) {
-  console.log(`Delete SSH account for ${username} with expiry ${exp} days, IP limit ${iplimit}, and password ${password}`);
+async function delssh(username, password, exp, serverId) {
+  console.log(`Delete SSH account for ${username} with expiry ${exp} days, and password ${password}`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -19,8 +19,8 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/deletesshvpn`;
-      const web_URL = `http://${domain}${param}`; // Contoh: http://domainmu.com/vps/sshvpn
+      const param = `/vps/del`;
+      const web_URL = `http://${domain}${param}`; // Contoh: http://domainmu.com/vps/usernew
       const AUTH_TOKEN = server.auth;
 
       const curlCommand = `curl -sS --connect-timeout 1 --max-time 30 --fail -X DELETE "${web_URL}/${username}" \
@@ -86,7 +86,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 ────────────────────────────
 
 ✨ Terima kasih telah memperpanjang layanan kami!
-*© Telegram Bots - 2025*`;
+*© Telegram Bots - 2026*`;
 
         return resolve(msg);
       });
@@ -94,7 +94,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
   });
 }
 async function delvmess(username, exp, quota, limitip, serverId) {
-  console.log(`Delete VMess account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip}`);
+  console.log(`Delete VMess account for ${username} with expiry ${exp} days`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -109,7 +109,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/deletevmess`;
+      const param = `/vps/delws`;
       const web_URL = `http://${domain}${param}`; // contoh: http://domain.com/vps/vmess
       const AUTH_TOKEN = server.auth;
 
@@ -176,14 +176,14 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 ────────────────────────────
 
 ✨ Terima kasih telah memperpanjang layanan kami!
-*© Telegram Bots - 2025*`;
+*© Telegram Bots - 2026*`;
 
         return resolve(msg);
       });
     });
   });
 }
-async function delvless(username, exp, quota, limitip, serverId) {
+async function delvless(username, exp, serverId) {
   console.log(`Delete VLESS account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip}`);
 
   // Validasi username
@@ -199,7 +199,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/deletevless`;
+      const param = `/vps/delws`;
       const web_URL = `http://${domain}${param}`;        // Contoh: http://domain.com/vps/vless
       const AUTH_TOKEN = server.auth;
 
@@ -266,14 +266,14 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 ────────────────────────────
 
 ✨ Terima kasih telah memperpanjang layanan kami!
-*© Telegram Bots - 2025*`;
+*© Telegram Bots - 2026*`;
 
         return resolve(msg);
       });
     });
   });
 }
-async function deltrojan(username, exp, quota, limitip, serverId) {
+async function deltrojan(username, exp, serverId) {
   console.log(`Delete TROJAN account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip}`);
 
   // Validasi username
@@ -289,7 +289,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/deletetrojan`;
+      const param = `/vps/delws`;
       const web_URL = `http://${domain}${param}`;         // Contoh: http://domain.com/vps/trojan
       const AUTH_TOKEN = server.auth;
 
@@ -356,7 +356,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 ────────────────────────────
 
 ✨ Terima kasih telah memperpanjang layanan kami!
-*© Telegram Bots - 2025*`;
+*© Telegram Bots - 2026*`;
 
         return resolve(msg);
       });

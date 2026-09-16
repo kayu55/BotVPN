@@ -3,7 +3,7 @@ const { exec } = require('child_process');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./sellvpn.db');
 
-async function checkconfigsshvpn(username, password, exp, iplimit, serverId) {
+async function checkconfigsshvpn(username, password, exp, serverId) {
   console.log(`Check config SSH account for ${username}`);
 
   // Validasi username
@@ -51,15 +51,12 @@ async function checkconfigsshvpn(username, password, exp, iplimit, serverId) {
 ────────────────────────
 📡 *SSH WS*    : \`${s.hostname}:80@${s.username}:${s.password}\`
 🔒 *SSH SSL*   : \`${s.hostname}:443@${s.username}:${s.password}\`
-📶 *SSH UDP*   : \`${s.hostname}:1-65535@${s.username}:${s.password}\`
-🌐 *DNS SELOW* : \`ns-${s.hostname}:5300@${s.username}:${s.password}\`
 ────────────────────────
 🌍 *Host*         : \`${s.hostname}\`
 🏢 *ISP*          : \`${s.ISP}\`
 🏙️ *City*         : \`${s.CITY}\`
 👤 *Username*     : \`${s.username}\`
 🔑 *Password*     : \`${s.password}\`
-🗝️ *Public Key*   : \`${s.pubkey ? s.pubkey : "-"}\`
 📅 *Expiry Date*  : \`${s.exp}\`
 ⏰ *Expiry Time*  : \`${s.time}\`
 📌 *IP Limit*     : \`${LIMIT_IP}\`
@@ -67,10 +64,6 @@ async function checkconfigsshvpn(username, password, exp, iplimit, serverId) {
 🛠 *Ports*:
 • TLS         : \`${s.port.tls}\` z
 • Non-TLS     : \`${s.port.none}\`
-• OVPN TCP    : \`${s.port.ovpntcp}\`
-• OVPN UDP    : \`${s.port.ovpnudp}\`
-• SSH OHP     : \`${s.port.sshohp}\`
-• UDP Custom  : \`${s.port.udpcustom}\`
 ────────────────────────
 🧩 *Payload WS*:
 \`
@@ -91,13 +84,10 @@ User-Agent: [ua]
 Upgrade: websocket
 \`
 
-📥 *Download Config Ovpn*:
-🔗 http://${s.hostname}:81/myvpn-config.zip
-
 📥 *Download All Config UNLOCK SSH*:
 🔗 http://ssl-${s.hostname}:81/config-Indonesia.zip
 
-*© Telegram Bots - 2025*
+*© Telegram Bots - 2026*
 ✨ Terima kasih telah menggunakan layanan kami!
 `;
         return resolve(msg);
@@ -105,7 +95,7 @@ Upgrade: websocket
     });
   });
 }
-async function checkconfigvmess(username, exp, quota, iplimit, serverId) {
+async function checkconfigvmess(username, exp, serverId) {
   console.log(`Check config VMess account for ${username}`);
 
   // Validasi username
@@ -123,8 +113,6 @@ async function checkconfigvmess(username, exp, quota, iplimit, serverId) {
       const domain = server.domain;
       const web_URL = `http://${domain}/vps/checkconfigvmess/${username}`; // contoh: http://domain.com/vps/checkconfigvmess/aristore
       const AUTH_TOKEN = server.auth;
-      const LIMIT_IP = iplimit;
-      const KUOTA = quota;
 
   const curlCommand = `curl -s -X GET "${web_URL}" \
 -H "Authorization: ${AUTH_TOKEN}" \
@@ -158,8 +146,6 @@ async function checkconfigvmess(username, exp, quota, iplimit, serverId) {
 🏙️ *City*         : \`${s.CITY}\`
 🛡 *UUID*          : \`${s.uuid}\`
 🧾 *Expired*      : \`${s.expired}\` 
-📦 *Quota*        : \`${KUOTA === "0" ? "Unlimited" : KUOTA} GB\`
-🔢 *IP Limit*     : \`${LIMIT_IP === "0" ? "Unlimited" : LIMIT_IP} IP\`
 ──────────────
 📡 *Ports*:
 - TLS         : ${s.port.tls}
@@ -187,7 +173,7 @@ async function checkconfigvmess(username, exp, quota, iplimit, serverId) {
 - Security    : \`auto\`
 - Network     : \`ws, grpc, upgrade\`
 
-*© Telegram Bots - 2025*
+*© Telegram Bots - 2026*
 ✨ Terima kasih telah menggunakan layanan kami!
 `;
 
@@ -196,7 +182,7 @@ async function checkconfigvmess(username, exp, quota, iplimit, serverId) {
     });
   });
 }
-async function checkconfigvless(username, exp, quota, iplimit, serverId) {
+async function checkconfigvless(username, exp, serverId) {
   console.log(`Check config VLESS account for ${username}`);
 
   // Validasi username
@@ -214,8 +200,6 @@ async function checkconfigvless(username, exp, quota, iplimit, serverId) {
       const domain = server.domain;
       const web_URL = `http://${domain}/vps/checkconfigvless/${username}`; // contoh: http://domain.com/vps/checkconfigvless/aristore
       const AUTH_TOKEN = server.auth;
-      const LIMIT_IP = iplimit;
-      const KUOTA = quota;
 
   const curlCommand = `curl -s -X GET "${web_URL}" \
 -H "Authorization: ${AUTH_TOKEN}" \
@@ -249,8 +233,6 @@ async function checkconfigvless(username, exp, quota, iplimit, serverId) {
 🏙️ *City*         : \`${s.CITY}\`
 🛡 *UUID*         : \`${s.uuid}\`
 📅 *Expired*      : \`${s.expired}\` 
-📦 *Quota*        : \`${KUOTA === "0" ? "Unlimited" : KUOTA} GB\`
-🔢 *IP Limit*     : \`${LIMIT_IP === "0" ? "Unlimited" : LIMIT_IP} IP\`
 ──────────────
 📡 *Ports*:
 - TLS         : ${s.port.tls}
@@ -277,7 +259,7 @@ async function checkconfigvless(username, exp, quota, iplimit, serverId) {
 - Security    : \`auto\`
 - Network     : \`ws, grpc, upgrade\`
 
-*© Telegram Bots - 2025*
+*© Telegram Bots - 2026*
 ✨ Terima kasih telah menggunakan layanan kami!
 `;
 
@@ -286,7 +268,7 @@ async function checkconfigvless(username, exp, quota, iplimit, serverId) {
     });
   });
 }
-async function checkconfigtrojan(username, exp, quota, iplimit, serverId) {
+async function checkconfigtrojan(username, exp, serverId) {
   console.log(`Check config TROJAN account for ${username}`);
 
   // Validasi username
@@ -304,8 +286,6 @@ async function checkconfigtrojan(username, exp, quota, iplimit, serverId) {
       const domain = server.domain;
       const web_URL = `http://${domain}/vps/checkconfigtrojan/${username}`; // contoh: http://domain.com/vps/checkconfigtrojan/aristore
       const AUTH_TOKEN = server.auth;
-      const LIMIT_IP = iplimit;
-      const KUOTA = quota;
 
   const curlCommand = `curl -s -X GET "${web_URL}" \
 -H "Authorization: ${AUTH_TOKEN}" \
@@ -339,8 +319,6 @@ async function checkconfigtrojan(username, exp, quota, iplimit, serverId) {
 🏙️ *City*         : \`${s.CITY}\`
 🔑 *Key*          : \`${s.uuid}\`
 📅 *Expired*      : \`${s.expired}\` 
-📦 *Quota*        : \`${KUOTA === "0" ? "Unlimited" : KUOTA} GB\`
-🔢 *IP Limit*     : \`${LIMIT_IP === "0" ? "Unlimited" : LIMIT_IP} IP\`
 ──────────────
 📡 *Ports*:
 - TLS         : ${s.port.tls}
@@ -363,7 +341,7 @@ async function checkconfigtrojan(username, exp, quota, iplimit, serverId) {
 - Security    : \`auto\`
 - Network     : \`ws, grpc, upgrade\`
 
-*© Telegram Bots - 2025*
+*© Telegram Bots - 2026*
 ✨ Terima kasih telah menggunakan layanan kami!
 `;
 

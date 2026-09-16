@@ -2,8 +2,8 @@ const axios = require('axios');
 const { exec } = require('child_process');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./sellvpn.db');
-async function trialssh(username, password, exp, iplimit, serverId) {
-  console.log(`Creating SSH account for ${username} with expiry ${exp} days, IP limit ${iplimit}, and password ${password}`);
+async function trialssh(username, password, exp, serverId) {
+  console.log(`Creating SSH account for ${username} with expiry ${exp} days, and password ${password}`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -18,8 +18,8 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/trialsshvpn`;
-      const web_URL = `http://${domain}${param}`; // misalnya: http://idnusastb.domain.web.id/vps/sshvpn
+      const param = `/vps/trialssh`;
+      const web_URL = `http://${domain}${param}`; // misalnya: http://idnusastb.domain.web.id/vps/trialssh.sh
       const AUTH_TOKEN = server.auth;
       const days = exp;
       const KUOTA = "0"; // jika perlu di-hardcode, bisa diubah jadi parameter juga
@@ -89,30 +89,18 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 ────────────────────────
 📡 *SSH WS*    : \`${s.hostname}:80@${s.username}:${s.password}\`
 🔒 *SSH SSL*   : \`ssl-${s.hostname}:443@${s.username}:${s.password}\`
-📶 *SSH UDP*   : \`udp-${s.hostname}:1-65535@${s.username}:${s.password}\`
-🌐 *SSH SLOWDNS* : \`ns-${s.hostname}:5300@${s.username}:${s.password}\`
-────────────────────────
-*🔑 Account ZIVPN UDP*
-📡 *DOMAIN*    : \`udp-${s.hostname}\`
-🔑 *Password*     : \`${s.username}\`
 ────────────────────────
 🌍 *Host*         : \`${s.hostname}\`
 🏢 *ISP*          : \`${s.ISP}\`
 🏙️ *City*         : \`${s.CITY}\`
 👤 *Username*     : \`${s.username}\`
 🔑 *Password*     : \`${s.password}\`
-🗝️ *Public Key*  : \`${s.pubkey ? s.pubkey : "-"}\`
 📅 *Expiry Date*  : \`${s.exp}\`
 ⏰ *Expiry Time*  : \`${s.time}\`
-📌 *IP Limit*     : \`${LIMIT_IP}\`
 ────────────────────────
 🛠 *Ports*:
 • TLS         : \`${s.port.tls}\`
 • Non-TLS     : \`${s.port.none}\`
-• OVPN TCP    : \`${s.port.ovpntcp}\`
-• OVPN UDP    : \`${s.port.ovpnudp}\`
-• SSH OHP     : \`${s.port.sshohp}\`
-• UDP Custom  : \`${s.port.udpcustom}\`
 ────────────────────────
 🧩 *Payload WS*:
 \`
@@ -154,9 +142,9 @@ https://drive.google.com/file/d/1Sj37lUzkizp2-OoriCgVUC1IDRGlP1e3/view?usp=shari
 🔗 http://${s.hostname}:81/myvpn-config.zip
 
 📥 *GRUP TESTIMOINI & BERBAGI BUG*:
-🔗 http://t.me/RAJA\\_VPN\\_STORE
+🔗 https://t.me/+7CmOTs8jaL45ZGQ1
 
-*© Telegram Bots - 2025*
+*© Telegram Bots - 2026*
 ✨ Terima kasih telah menggunakan layanan kami!
 `;
         return resolve(msg);
@@ -164,8 +152,8 @@ https://drive.google.com/file/d/1Sj37lUzkizp2-OoriCgVUC1IDRGlP1e3/view?usp=shari
     });
   });
 }
-async function trialvmess(username, exp, quota, limitip, serverId) {
-  console.log(`Creating VMess account for ${username} with expiry ${exp} days, quota ${quota} GB, IP limit ${limitip}`);
+async function trialvmess(username, exp, serverId) {
+  console.log(`Creating VMess account for ${username} with expiry ${exp} days`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -180,7 +168,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/trialvmessall`;
+      const param = `/vps/trialvmess`;
       const web_URL = `http://${domain}${param}`; // contoh: http://idnusastb.domain.web.id/vps/vmess
       const AUTH_TOKEN = server.auth;
       const days = exp;
@@ -256,8 +244,6 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 🏙️ *City*         : \`${s.CITY}\`
 🛡 *UUID*         : \`${s.uuid}\`
 🧾 *Expired*      : \`${s.expired}\` (${s.time})
-📦 *Quota*        : \`${KUOTA === "0" ? "Unlimited" : KUOTA} GB\`
-🔢 *IP Limit*     : \`${LIMIT_IP === "0" ? "Unlimited" : LIMIT_IP} IP\`
 ──────────────
 📡 *Ports*:
 - TLS         : ${s.port.tls}
@@ -295,9 +281,9 @@ https://drive.google.com/file/d/1SmgoAUjTf9tt297deVkn6cd7ZOuha62a/view?usp=shari
 3️⃣ Selesai & Connect 🚀  
 
 📥 *GRUP TESTIMOINI & BERBAGI BUG*:
-🔗 http://t.me/RAJA\\_VPN\\_STORE
+🔗 https://t.me/+7CmOTs8jaL45ZGQ1
 
-*© Telegram Bots - 2025*
+*© Telegram Bots - 2026*
 ✨ Terima kasih telah menggunakan layanan kami!
 `;
 
@@ -307,8 +293,8 @@ https://drive.google.com/file/d/1SmgoAUjTf9tt297deVkn6cd7ZOuha62a/view?usp=shari
   });
 }
 
-async function trialvless(username, exp, quota, limitip, serverId) {
-  console.log(`Creating VLESS account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip}`);
+async function trialvless(username, exp, serverId) {
+  console.log(`Creating VLESS account for ${username} with expiry ${exp} days`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -323,12 +309,10 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/trialvlessall`;
+      const param = `/vps/trialvless`;
       const web_URL = `http://${domain}${param}`; // Contoh: http://domainmu.com/vps/vless
       const AUTH_TOKEN = server.auth;
       const days = exp;
-      const KUOTA = quota;
-      const LIMIT_IP = limitip;
 
   const curlCommand = `curl -sS --connect-timeout 1 --max-time 30 -X POST "${web_URL}" \
 -H "Authorization: ${AUTH_TOKEN}" \
@@ -399,8 +383,6 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 🏙️ *City*         : \`${s.CITY}\`
 🛡 *UUID*         : \`${s.uuid}\`
 📅 *Expired*      : \`${s.expired}\` (${s.time})
-📦 *Quota*        : \`${KUOTA === "0" ? "Unlimited" : KUOTA} GB\`
-🔢 *IP Limit*     : \`${LIMIT_IP === "0" ? "Unlimited" : LIMIT_IP} IP\`
 ──────────────
 📡 *Ports*:
 - TLS         : ${s.port.tls}
@@ -437,9 +419,9 @@ https://drive.google.com/file/d/1SmgoAUjTf9tt297deVkn6cd7ZOuha62a/view?usp=shari
 3️⃣ Selesai & Connect 🚀  
 
 📥 *GRUP TESTIMOINI & BERBAGI BUG*:
-🔗 http://t.me/RAJA\\_VPN\\_STORE
+🔗 https://t.me/+7CmOTs8jaL45ZGQ1
 
-*© Telegram Bots - 2025*
+*© Telegram Bots - 2026*
 ✨ Terima kasih telah menggunakan layanan kami!
 `;
 
@@ -448,8 +430,8 @@ https://drive.google.com/file/d/1SmgoAUjTf9tt297deVkn6cd7ZOuha62a/view?usp=shari
     });
   });
 }
-async function trialtrojan(username, exp, quota, limitip, serverId) {
-  console.log(`Creating Trojan account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip}`);
+async function trialtrojan(username, exp, serverId) {
+  console.log(`Creating Trojan account for ${username} with expiry ${exp} days`);
 
   // Validasi username
 if (!/^[a-z0-9-]+$/.test(username)) {
@@ -464,7 +446,7 @@ if (!/^[a-z0-9-]+$/.test(username)) {
       }
 
       const domain = server.domain;
-      const param = `/vps/trialtrojanall`;
+      const param = `/vps/trialtrojan`;
       const web_URL = `http://${domain}${param}`; // contoh: http://domainmu.com/vps/trojan
       const AUTH_TOKEN = server.auth;
       const days = exp;
@@ -540,8 +522,6 @@ if (!/^[a-z0-9-]+$/.test(username)) {
 🏙️ *City*         : \`${s.CITY}\`
 🔑 *Key*          : \`${s.uuid}\`
 📅 *Expired*      : \`${s.expired}\` (${s.time})
-📦 *Quota*        : \`${KUOTA === "0" ? "Unlimited" : KUOTA} GB\`
-🔢 *IP Limit*     : \`${LIMIT_IP === "0" ? "Unlimited" : LIMIT_IP} IP\`
 ──────────────
 📡 *Ports*:
 - TLS         : ${s.port.tls}
@@ -574,9 +554,9 @@ https://drive.google.com/file/d/1SmgoAUjTf9tt297deVkn6cd7ZOuha62a/view?usp=shari
 3️⃣ Selesai & Connect 🚀  
 
 📥 *GRUP TESTIMOINI & BERBAGI BUG*:
-🔗 http://t.me/RAJA\\_VPN\\_STORE
+🔗 https://t.me/+7CmOTs8jaL45ZGQ1
 
-*© Telegram Bots - 2025*
+*© Telegram Bots - 2026*
 ✨ Terima kasih telah menggunakan layanan kami!
 `;
 
