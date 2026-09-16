@@ -4,22 +4,12 @@
 server_order=(
   "SG-VIP"
   "SG-VVIP"
-  "SG-VVIP2"
-  "SG-TEAM1"
-  "ID-NUSA"
-  "ID-NUSA2"
-  "ID-NUSA-STB"
 )
 
 # Alias => domain
 declare -A servers=(
-  ["SG-VIP"]="sgvip.rajaserverpremium.web.id"
-  ["SG-VVIP"]="sgvvip.rajaserverpremium.web.id"
-  ["SG-VVIP2"]="sgvvip2.rajaserverpremium.web.id"
-  ["SG-TEAM1"]="sgteam1.rajaserverpremium.web.id"
-  ["ID-NUSA"]="idnusa.rajaserverpremium.web.id"
-  ["ID-NUSA2"]="idnusa2.rajaserverpremium.web.id"
-  ["ID-NUSA-STB"]="idnusastb.rajaserverpremium.web.id"
+  ["SG-VIP"]="ln.aryapro.net"
+  ["SG-VVIP"]="sgp.aryapro.net"
 )
 
 # Port + label
