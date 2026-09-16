@@ -7,7 +7,7 @@ server_order=(
 
 # Alias => domain
 declare -A servers=(
-  ["SG-VIP"]="sg.mikanajwa.my.id"
+  ["SG-VIP"]="172.237.87.184"
 )
 
 # Port + label
