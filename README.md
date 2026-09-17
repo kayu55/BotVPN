@@ -1,11 +1,11 @@
 ## SCRIPT AUTO ORDER BOT TELE BY API POTATO
 ## Installasi Otomatis
 ```bash
-sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update -y && apt install -y git && apt install -y curl && curl -L -k -sS https://raw.githubusercontent.com/arivpnstores/BotVPN/main/start -o start && bash start sellvpn && [ $? -eq 0 ] && rm -f start
+sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update -y && apt install -y git && apt install -y curl && curl -L -k -sS https://raw.githubusercontent.com/arivpnstores/kayu55/main/start -o start && bash start sellvpn && [ $? -eq 0 ] && rm -f start
 ```
 ## UPDATE
 ```bash
-curl --connect-timeout 1 --max-time 3 -sL https://raw.githubusercontent.com/arivpnstores/BotVPN/main/update.sh -o update.sh && chmod +x update.sh && bash update.sh
+curl --connect-timeout 1 --max-time 3 -sL https://raw.githubusercontent.com/kayu55/BotVPN/main/update.sh -o update.sh && chmod +x update.sh && bash update.sh
 ```
 <img src="./ss.png" alt="image" width="500"/>
 
@@ -51,7 +51,7 @@ curl -X POST "https://orkut.rajaserver.web.id/api/orkut/qris-withdraw" -d "usern
 ## TAMPILAN SC BotVPN POTATO 
 <img src="./ss2.png" alt="image" width="300"/>
 
-Owner : https://t.me/ARI_VPN_STORE
+Owner : http://t.me/Belivpn_arya_bot
 
 DONASI SCAN QIRS : 
 <img src="https://rajaserver.web.id/qris.jpg" alt="image" width="300"/>
