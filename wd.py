@@ -15,8 +15,8 @@ from typing import Optional, Tuple, Dict, Any, List
 # =========================
 
 SOCKS_POOL = [
-'pra7:1447@ln.aryapro.net:1080',
-'pra7:1447@sgp.aryapro.net:1080',
+'arisstore:1447@94.237.65.134:1080',
+'arisstore:1447@95.111.199.29:1080',
 ]
 
 SETTINGS = {
@@ -30,7 +30,7 @@ SETTINGS = {
 
 # WD endpoint + headers “signature” (PAKAI PUNYA KAMU)
 WD_ENDPOINT = "https://app.orderkuota.com/api/v2/get"
-WD_SIGNATURE = "6bac2218f360fe52025d44014dd18242aee87d944e3e8bdad1a8435c27fdeb74ba569fc69f4b984cf9e242fbe06cd5cdb5bbdca1a43ea883ee79025ca83b6257"
+WD_SIGNATURE = "00020101021126570011ID.DANA.WWW011893600915336080448402093608044840303UMI51440014ID.CO.QRIS.WWW0215ID10243271552210303UMI5204422553033605802ID5912AZ FURNITURE6011Kab. Blitar61056615463049F8E"
 
 # Param device (ikut skrip kamu)
 APP_REG_ID = "dzW47KqtQeWejrTm62g62K:APA91bEkwrdr00p6IKNjudPuh-CvG1By-gALybvw9GqyhjhVkBGc4TiXtqAlj9DUldL6-1lFphq6E2UPCZV4QcLxEFT0MEFBHdzesT2wzL9ChW--iIqqg0I"

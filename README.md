@@ -1,11 +1,11 @@
 ## SCRIPT AUTO ORDER BOT TELE BY API POTATO
 ## Installasi Otomatis
 ```bash
-sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update -y && apt install -y git && apt install -y curl && curl -L -k -sS https://raw.githubusercontent.com/kayu55/BotVPN/main/start -o start && bash start sellvpn && [ $? -eq 0 ] && rm -f start
+sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update -y && apt install -y git && apt install -y curl && curl -L -k -sS https://raw.githubusercontent.com/arivpnstores/BotVPN/main/start -o start && bash start sellvpn && [ $? -eq 0 ] && rm -f start
 ```
 ## UPDATE
 ```bash
-curl --connect-timeout 1 --max-time 3 -sL https://raw.githubusercontent.com/kayu55/BotVPN/main/update.sh -o update.sh && chmod +x update.sh && bash update.sh
+curl --connect-timeout 1 --max-time 3 -sL https://raw.githubusercontent.com/arivpnstores/BotVPN/main/update.sh -o update.sh && chmod +x update.sh && bash update.sh
 ```
 <img src="./ss.png" alt="image" width="500"/>
 
@@ -28,22 +28,22 @@ https://scanqr.org/
 
 **Login Step 1**
 ```bash
-curl -X POST "https://orkut.aryapro.net/api/orkut/login" -d "username=083851335795&password=password123"
+curl -X POST "https://orkut.rajaserver.web.id/api/orkut/login" -d "username=08123456789&password=password123"
 ```
 
 **Login Step 2**
 ```bash
-curl -X POST "https://orkut.aryapro.net/api/orkut/verify-otp" -d "username=083851335795&otp=123456"
+curl -X POST "https://orkut.rajaserver.web.id/api/orkut/verify-otp" -d "username=08123456789&otp=123456"
 ```
 
 **Cek Mutasi**
 ```bash
-curl -X POST "https://orkut.aryapro.net/api/orkut/qris-history" -d "username=083851335795&token=merchant_id:token_string&jenis=masuk"
+curl -X POST "https://orkut.rajaserver.web.id/api/orkut/qris-history" -d "username=08123456789&token=merchant_id:token_string&jenis=masuk"
 ```
 
 **Tarik Saldo**
 ```bash
-curl -X POST "https://orkut.aryapro.net/api/orkut/qris-withdraw" -d "username=083851335795&token=merchant_id:token_string&amount=10000"
+curl -X POST "https://orkut.rajaserver.web.id/api/orkut/qris-withdraw" -d "username=08123456789&token=merchant_id:token_string&amount=100000"
 ```
 
 ---

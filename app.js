@@ -191,7 +191,7 @@ let AUTH_USER = vars.AUTH_USERNAME_ORKUT;  // username orderkuota
 let AUTH_TOKEN = vars.AUTH_TOKEN_ORKUT;    // token orderkuota
 
 const bot = new Telegraf(BOT_TOKEN);
-let ADMIN_USERNAME = 'Belivpn_arya_bot';
+let ADMIN_USERNAME = '@Belivpn_arya_bot';
 const adminIds = ADMIN;
 logger.info('Bot initialized');
 /*
@@ -491,9 +491,9 @@ Status: <code>${statusReseller}</code>
 • 🔑 Menu Admin   : /admin
 • 🛡️ Admin Panel  : /helpadmin
 
-👨‍💻 <b>Pembuat:</b> @kontol
-🛠️ <b>Credit:</b> kontol ngaceng
-🔧 <b>Base:</b> kontolmu
+👨‍💻 <b>Pembuat:</b> @Belivpn_arya_bot
+🛠️ <b>Credit:</b> yes
+🔧 <b>Base:</b> oke
 👥 <b>Pengguna BOT:</b> ${jumlahPengguna}
 ⏱️ <b>Latency:</b> ${latency} ms
 ──────────────────────────`;
@@ -1466,7 +1466,7 @@ bot.action(/^batal_topup_(.+)$/, async (ctx) => {
 bot.action('jadi_reseller', async (ctx) => {
   await ctx.answerCbQuery().catch(() => {});
   const userId = ctx.from.id;
-  const MINIMUM_BALANCE = 100000; // Rp100,000
+  const MINIMUM_BALANCE = 1000; // Rp1,000
 
   // Check saldo user dari database
   db.get('SELECT saldo FROM users WHERE user_id = ?', [userId], async (err, row) => {

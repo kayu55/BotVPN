@@ -12,7 +12,7 @@ sudo apt autoremove -y
     fi
 
     if [ ! -f /root/BotVPN/app.js ]; then
-        git clone https://github.com/kayu55/BotVPN.git /root/BotVPN
+        git clone https://github.com/arivpnstores/BotVPN.git /root/BotVPN
     fi
 apt install jq -y
 apt install npm pm2 -y

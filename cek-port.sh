@@ -3,11 +3,15 @@
 # Urutan tampilan (INI yang bikin rapi)
 server_order=(
   "SG-VIP"
+  "SG-VVIP"
+  "SG-VVIP2"
 )
 
 # Alias => domain
 declare -A servers=(
   ["SG-VIP"]="172.237.87.184"
+  ["SG-VVIP"]="94.237.65.134"
+  ["SG-VVIP2"]="95.111.199.29"
 )
 
 # Port + label
