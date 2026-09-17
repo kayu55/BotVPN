@@ -1466,7 +1466,7 @@ bot.action(/^batal_topup_(.+)$/, async (ctx) => {
 bot.action('jadi_reseller', async (ctx) => {
   await ctx.answerCbQuery().catch(() => {});
   const userId = ctx.from.id;
-  const MINIMUM_BALANCE = 100000; // Rp100,000
+  const MINIMUM_BALANCE = 1000; // Rp1,000
 
   // Check saldo user dari database
   db.get('SELECT saldo FROM users WHERE user_id = ?', [userId], async (err, row) => {
