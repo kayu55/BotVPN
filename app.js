@@ -182,7 +182,7 @@ const vars = JSON.parse(fs.readFileSync(path.join(__dirname, '.vars.json'), 'utf
 const BOT_TOKEN = vars.BOT_TOKEN;
 const port = vars.PORT || 6969;
 const ADMIN = vars.USER_ID; 
-const NAMA_STORE = vars.NAMA_STORE || '@ARI_VPN_STORE';
+const NAMA_STORE = vars.NAMA_STORE || '@Belivpn_arya_bot';
 const GROUP_ID = vars.GROUP_ID;
 // V1 GOPAY
 let GOPAY_KEY = vars.GOPAY_KEY;
@@ -191,7 +191,7 @@ let AUTH_USER = vars.AUTH_USERNAME_ORKUT;  // username orderkuota
 let AUTH_TOKEN = vars.AUTH_TOKEN_ORKUT;    // token orderkuota
 
 const bot = new Telegraf(BOT_TOKEN);
-let ADMIN_USERNAME = '@ARI_VPN_STORE';
+let ADMIN_USERNAME = 'Belivpn_arya_bot';
 const adminIds = ADMIN;
 logger.info('Bot initialized');
 /*
@@ -1466,7 +1466,7 @@ bot.action(/^batal_topup_(.+)$/, async (ctx) => {
 bot.action('jadi_reseller', async (ctx) => {
   await ctx.answerCbQuery().catch(() => {});
   const userId = ctx.from.id;
-  const MINIMUM_BALANCE = 1000; // Rp1,000
+  const MINIMUM_BALANCE = 100000; // Rp100,000
 
   // Check saldo user dari database
   db.get('SELECT saldo FROM users WHERE user_id = ?', [userId], async (err, row) => {
